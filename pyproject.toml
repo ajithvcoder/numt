@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "numt"
+version = "0.1.0"
+description = "A utility library for formatting numbers, currencies, dates, units, and more."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+  { name="ajithvcoder", email="ajithvcoder@gmail.com" }
+]
+keywords = ["formatting", "numbers", "units", "humanize", "utilities"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+requires-python = ">=3.9"
+dependencies = [
+  "phonenumbers>=8.12",
+  "Babel>=2.9"
+]
