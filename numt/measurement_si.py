@@ -1,4 +1,3 @@
-# You can use conversion dictionaries to convert and format appropriately.
 
 class SIUnit:
     """Base class for SI unit conversions"""
