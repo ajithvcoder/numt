@@ -1,6 +1,12 @@
-from numt.common.constants import short_numeric_suffixes, long_numeric_suffixes, short_googol_suffixes, long_googol_suffixes
+from numt.common.constants import (
+    short_numeric_suffixes,
+    long_numeric_suffixes,
+    short_googol_suffixes,
+    long_googol_suffixes,
+)
 
-def to_words(n, precision=2, format_type='short', strip_zero_cents=False):
+
+def to_words(n, precision=2, format_type="short", strip_zero_cents=False):
     """
     Convert numbers to human-readable format.
 
@@ -15,11 +21,10 @@ def to_words(n, precision=2, format_type='short', strip_zero_cents=False):
     """
     if n == 0:
         return "0"
-    
+
     abs_n = abs(n)
 
-
-    if format_type == 'short':
+    if format_type == "short":
         # Short form suffixes
         standard_suffixes = short_numeric_suffixes
         googol_suffixes = short_googol_suffixes
@@ -27,17 +32,17 @@ def to_words(n, precision=2, format_type='short', strip_zero_cents=False):
         # Long form suffixes
         standard_suffixes = long_numeric_suffixes
         googol_suffixes = long_googol_suffixes
-        
+
     # Calculate order of magnitude
     if abs_n < 1:
         order = 0
     else:
         order = len(f"{int(abs_n)}") - 1
-    
+
     if order < 100:
         # Standard -illion scaling (divide by 1000)
         idx = 0
-        while abs_n >= 1000 and idx < len(standard_suffixes)-1:
+        while abs_n >= 1000 and idx < len(standard_suffixes) - 1:
             abs_n /= 1000.0
             idx += 1
         suffix = standard_suffixes[idx]
@@ -50,18 +55,15 @@ def to_words(n, precision=2, format_type='short', strip_zero_cents=False):
             suffix = googol_suffixes[power_index]
         else:
             suffix = f"{googol_power}-googol"
-    
+
     formatted_num = f"{abs_n:.{precision}f}"
-    
+
     # Apply sign
     formatted_num = f"-{formatted_num}" if n < 0 else formatted_num
-    
+
     # Strip .00 if requested
     if strip_zero_cents:
-        if '.' in formatted_num and formatted_num.endswith('0' * precision):
-            formatted_num = formatted_num.split('.')[0]
-    
-    # Add suffix if not empty
-    if suffix:
-        return f"{formatted_num} {suffix}".strip()
-    return formatted_num
+        if "." in formatted_num and formatted_num.endswith("0" * precision):
+            formatted_num = formatted_num.split(".")[0]
+
+    return f"{formatted_num} {suffix}".strip()

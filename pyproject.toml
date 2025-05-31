@@ -1,25 +1,49 @@
 [build-system]
-requires = ["setuptools>=42", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
 
-[project]
+[tool.poetry]
 name = "numt"
 version = "0.1.0"
-description = "A utility library for formatting numbers, currencies, dates, units, and more."
+description = "A light-weight utility library for formatting numbers, currencies, dates, units, and more."
 readme = "README.md"
-license = { text = "MIT" }
-authors = [
-  { name="ajithvcoder", email="ajithvcoder@gmail.com" }
-]
+license = "MIT"
+authors = ["ajithvcoder <ajithvcoder@gmail.com>"]
 keywords = ["formatting", "numbers", "units", "humanize", "utilities"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+homepage = "https://pypi.org/project/numt/"
+repository = "https://github.com/YOUR_USERNAME/numt"  # Optional but recommended
+documentation = "https://github.com/YOUR_USERNAME/numt"  # Optional
 
-requires-python = ">=3.9"
-dependencies = [
-  "phonenumbers>=8.12",
-  "Babel>=2.9"
+
+[tool.poetry.dependencies]
+python = ">=3.11, <4.0"
+Babel = ">=2.9"
+
+
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.7.0"
+black = "^24.10.0"
+ruff = "^0.8.0"
+isort = "^5.0"
+mypy = "^1.0"
+pytest = "^7.0"
+pytest-cov = "^4.0"
+
+# for formatting and linting
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.ruff]
+lint.extend-ignore = [
+    "E402",  # Ignore module-level import issues
+    "E731",
+    "UP007", # Wants | over Union, which breaks 3.8
 ]
+line-length = 88

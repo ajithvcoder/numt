@@ -1,16 +1,16 @@
-
 def format_percentage(n, precision=1):
     """
     Format number as percentage.
-    
+
     Args:
         n (float): Number to format (0-1)
         precision (int): Number of decimal places
-    
+
     Returns:
         str: Formatted percentage
     """
     return f"{n * 100:.{precision}f}%"
+
 
 def percent_of(value, percent):
     """
@@ -48,6 +48,7 @@ def percentile(data, percentile_rank):
     d1 = data[c] * (k - f)
     return d0 + d1
 
+
 def percentage_change(old, new):
     """
     Calculate the percentage change between two values.
@@ -62,6 +63,7 @@ def percentage_change(old, new):
     if old == 0:
         raise ValueError("Old value cannot be zero")
     return ((new - old) / old) * 100
+
 
 def percent_rank(data, value):
     """
@@ -78,6 +80,7 @@ def percent_rank(data, value):
         raise ValueError("Data list is empty")
     count = sum(1 for x in data if x < value)
     return (count / len(data)) * 100
+
 
 def value_percentiles_with_duplicates(data):
     """
@@ -109,7 +112,7 @@ def value_percentiles_with_duplicates(data):
             value_to_percentile[val] = percentile
 
     # Build result for original data
-    return [{'value': val, 'percentile': value_to_percentile[val]} for val in data]
+    return [{"value": val, "percentile": value_to_percentile[val]} for val in data]
 
 
 def apply_discount(price, discount_percent):
@@ -124,6 +127,7 @@ def apply_discount(price, discount_percent):
         float: Discounted price.
     """
     return price - (price * discount_percent / 100)
+
 
 def calculate_discount_amount(list_price, net_price):
     """
@@ -140,5 +144,5 @@ def calculate_discount_amount(list_price, net_price):
         raise ValueError("Prices cannot be negative")
     if net_price > list_price:
         raise ValueError("Net price cannot be greater than list price")
-        
+
     return list_price - net_price

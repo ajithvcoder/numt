@@ -1,0 +1,34 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-added-large-files
+        args: ['--maxkb=4000']
+      - id: debug-statements
+      - id: detect-private-key
+
+  - repo: https://github.com/psf/black
+    rev: 24.4.2
+    hooks:
+      - id: black
+        args: ['--line-length=88']
+        exclude: ^docs/|.*\.(json|yaml|md|txt)$
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.4.2
+    hooks:
+      # Run the linter.
+      - id: ruff
+        args: ['--fix']
+        exclude: ^docs/|.*\.(json|yaml|md|txt)$
+
+  # Add local hooks to run custom commands
+  - repo: local
+    hooks:
+      - id: run-make-format
+        name: Run Make Format
+        entry: make format
+        language: system
+        pass_filenames: false
