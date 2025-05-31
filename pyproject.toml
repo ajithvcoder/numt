@@ -16,8 +16,8 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 homepage = "https://pypi.org/project/numt/"
-repository = "https://github.com/YOUR_USERNAME/numt"  # Optional but recommended
-documentation = "https://github.com/YOUR_USERNAME/numt"  # Optional
+repository = "https://github.com/ajithvcoder/numt"  # Optional but recommended
+documentation = "https://github.com/ajithvcoder/numt"  # Optional
 
 
 [tool.poetry.dependencies]
